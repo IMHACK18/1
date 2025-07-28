@@ -11,7 +11,7 @@ echo "[+] Worker Name: $WORKER"
 # Update system and install required packages
 install_dependencies() {
     sudo apt update -y
-    sudo apt install -y git build-essential cmake libuv1-dev libssl-dev libhwloc-dev screen htop
+    sudo apt install -y git build-essential cmake libuv1-dev libssl-dev libhwloc-dev htop
 }
 
 # Download and build xmrig from source
@@ -31,19 +31,10 @@ build_xmrig() {
 start_mining() {
     chmod +x ./xmrig-runner
     echo "[+] Starting mining..."
-    ./xmrig-runner -o $POOL -u $WALLET -p $WORKER -a rx -k --coin monero --tls=false --donate-level=1
+    ./xmrig-runner -o $POOL -u $WALLET -p $WORKER --donate-level 1 -t $(nproc)
 }
 
-# Run mining in a background screen session
-run_in_screen() {
-    screen -dmS monero_miner bash -c "./xmrig-runner -o $POOL -u $WALLET -p $WORKER -a rx -k --coin monero --tls=false --donate-level=1"
-    echo "[+] Miner started in background (screen session: monero_miner). Use 'screen -r monero_miner' to view."
-}
-
-# Run steps
-if [ ! -f "./xmrig-runner" ]; then
-    install_dependencies
-    build_xmrig
-fi
-
-run_in_screen
+# Execute functions
+install_dependencies
+build_xmrig
+start_mining
